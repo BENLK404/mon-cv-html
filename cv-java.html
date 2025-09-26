@@ -12,420 +12,367 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.4;
-            color: #1f2937;
-            background: #f8fafc;
-            font-size: 16px;
+            color: #333;
+            background: white;
+            font-size: 14px;
         }
         
         .container {
             max-width: 100%;
             margin: 0 auto;
             background: white;
-            min-height: 100vh;
         }
         
-        .mobile-header {
-            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 24px 20px;
+            padding: 20px 15px;
             text-align: center;
-            position: relative;
-        }
-        
-        .profile-image-placeholder {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
         }
         
         .name {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
         
         .title {
-            font-size: 16px;
-            color: #e0e7ff;
-            margin-bottom: 20px;
-            font-weight: 400;
+            font-size: 14px;
+            color: #ecf0f1;
+            margin-bottom: 15px;
+            font-weight: 300;
         }
         
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 20px;
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 12px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            font-size: 13px;
-            color: #e0e7ff;
+            justify-content: center;
+            gap: 8px;
         }
         
         .contact-icon {
-            width: 18px;
-            height: 18px;
-            margin-right: 8px;
+            width: 14px;
+            height: 14px;
             flex-shrink: 0;
         }
         
+        /* Main Content */
         .main-content {
-            padding: 0;
+            padding: 15px;
         }
         
         .section {
-            padding: 24px 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .section:last-child {
-            border-bottom: none;
+            margin-bottom: 25px;
         }
         
         .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1e40af;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+            color: #2c3e50;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .profile-text {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #4b5563;
+            font-size: 13px;
+            line-height: 1.5;
             text-align: justify;
+            color: #2c3e50;
+            margin-bottom: 15px;
         }
         
-        .skills-container {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 16px;
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            gap: 15px;
         }
         
         .skill-category {
-            margin-bottom: 20px;
-        }
-        
-        .skill-category:last-child {
-            margin-bottom: 0;
-        }
-        
-        .skill-category h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1e40af;
-        }
-        
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .skill-tag {
-            background: #e0e7ff;
-            color: #3730a3;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .experience-item {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .job-header {
             margin-bottom: 12px;
         }
         
-        .job-title {
-            font-size: 18px;
+        .skill-category h4 {
+            font-size: 13px;
             font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            color: #3498db;
+            border-left: 3px solid #3498db;
+            padding-left: 8px;
+        }
+        
+        .skill-list {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #555;
+            padding-left: 11px;
+        }
+        
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .job-header {
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 4px;
         }
         
         .job-company {
-            font-size: 15px;
-            color: #6b7280;
-            margin-bottom: 8px;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 6px;
         }
         
         .job-year {
-            display: inline-block;
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 13px;
+            font-size: 11px;
+            color: #3498db;
             font-weight: 600;
+            background: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: inline-block;
         }
         
         .job-tasks {
             list-style: none;
-            margin-top: 12px;
+            font-size: 12px;
+            color: #555;
+            margin-top: 10px;
         }
         
         .job-tasks li {
-            margin-bottom: 8px;
-            padding-left: 20px;
+            margin-bottom: 5px;
+            padding-left: 15px;
             position: relative;
-            font-size: 15px;
-            color: #4b5563;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         
         .job-tasks li:before {
             content: "▸";
             position: absolute;
             left: 0;
-            color: #1e40af;
+            color: #3498db;
             font-weight: bold;
-            font-size: 16px;
         }
         
+        /* Education Section */
         .education-item {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #1e40af;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
         }
         
         .degree {
-            font-size: 18px;
+            font-size: 13px;
             font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 8px;
+            color: #2c3e50;
+            margin-bottom: 6px;
         }
         
         .school {
-            font-size: 15px;
-            color: #6b7280;
-            margin-bottom: 6px;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 4px;
         }
         
         .year {
-            font-size: 14px;
-            color: #1e40af;
+            font-size: 11px;
+            color: #3498db;
             font-weight: 600;
         }
         
+        /* Projects Section */
         .projects-grid {
             display: grid;
-            gap: 16px;
+            gap: 15px;
         }
         
         .project-item {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
-        }
-        
-        .project-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: #1e40af;
-            color: white;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
         }
         
         .project-name {
-            font-size: 17px;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 10px;
-            padding-right: 60px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
         }
         
         .project-description {
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.5;
-        }
-        
-        .references-grid {
-            display: grid;
-            gap: 16px;
-        }
-        
-        .reference-item {
-            background: #f8fafc;
-            padding: 16px;
-            border-radius: 8px;
-            border-left: 3px solid #1e40af;
-        }
-        
-        .reference-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1e40af;
-            margin-bottom: 6px;
-        }
-        
-        .reference-company {
-            font-size: 14px;
-            color: #6b7280;
+            font-size: 11px;
+            color: #555;
             line-height: 1.4;
         }
         
-        .achievements-box {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+        /* References Section */
+        .reference-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 5px;
         }
         
-        .achievement-title {
-            font-size: 18px;
+        .reference-name {
+            font-size: 12px;
             font-weight: 600;
-            color: #1e3a8a;
-            margin-bottom: 10px;
+            color: #3498db;
+            margin-bottom: 4px;
         }
         
-        .achievement-list {
-            font-size: 15px;
-            color: #1e40af;
-            line-height: 1.5;
+        .reference-company {
+            font-size: 11px;
+            color: #7f8c8d;
+            line-height: 1.3;
         }
         
-        .floating-contact {
+        /* Print Button */
+        .print-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #1e40af;
+            background: #3498db;
             color: white;
-            width: 56px;
-            height: 56px;
+            border: none;
+            padding: 12px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
             cursor: pointer;
+            font-size: 16px;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             z-index: 1000;
-            transition: transform 0.2s;
         }
         
-        .floating-contact:hover {
-            transform: scale(1.1);
+        .print-button:hover {
+            background: #2980b9;
         }
         
-        .contact-modal {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            display: none;
-            z-index: 999;
-            min-width: 250px;
-        }
-        
-        .contact-modal.show {
-            display: block;
-            animation: slideUp 0.3s ease;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        /* Responsive breakpoints */
-        @media (min-width: 640px) {
-            .container {
-                max-width: 640px;
-                margin: 0 auto;
-            }
-            
-            .mobile-header {
-                padding: 32px 24px;
-            }
-            
-            .section {
-                padding: 32px 24px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
+        /* Tablet Styles */
         @media (min-width: 768px) {
             .container {
                 max-width: 768px;
+                margin: 0 auto;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            
+            .main-content {
+                padding: 25px 30px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .contact-item {
+                justify-content: flex-start;
             }
             
             .projects-grid {
                 grid-template-columns: 1fr 1fr;
             }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .container {
+                display: flex;
+                max-width: 210mm;
+                min-height: 297mm;
+            }
             
-            .references-grid {
-                grid-template-columns: 1fr 1fr;
+            .header {
+                width: 32%;
+                padding: 25px 20px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .main-content {
+                width: 68%;
+                padding: 25px 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 20px;
+            }
+            
+            .contact-item {
+                justify-content: flex-start;
+                margin-bottom: 10px;
+            }
+            
+            .skills-section {
+                margin-top: 25px;
+            }
+            
+            .references-section {
+                margin-top: 20px;
             }
         }
         
         @media print {
-            .floating-contact,
-            .contact-modal {
-                display: none !important;
+            .print-button {
+                display: none;
             }
             
             body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
                 font-size: 12px;
             }
             
-            .section {
-                break-inside: avoid;
+            .container {
+                box-shadow: none;
             }
         }
     </style>
 </head>
 <body>
+    <button class="print-button" onclick="window.print()">🖨</button>
+    
     <div class="container">
-        <div class="mobile-header">
-            <div class="profile-image-placeholder">
-                BK
-            </div>
+        <div class="header">
             <h1 class="name">BERNARD KOKOU KPEDZI</h1>
             <p class="title">Développeur Java Backend</p>
             
-            <div class="contact-grid">
+            <div class="contact-info">
                 <div class="contact-item">
                     <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
@@ -450,6 +397,48 @@
                     </svg>
                     BENLK404
                 </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                    </svg>
+                    Kokou Bernard Kpedzi
+                </div>
+            </div>
+            
+            <!-- Skills section pour desktop -->
+            <div class="skills-section" style="display: none;">
+                <h3 class="section-title" style="color: white; border-bottom-color: #3498db;">Compétences Techniques</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4 style="color: #3498db;">Langages</h4>
+                        <div class="skill-list" style="color: #ecf0f1;">Java (8+) • SQL • JavaScript • Dart</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 style="color: #3498db;">Frameworks</h4>
+                        <div class="skill-list" style="color: #ecf0f1;">Spring Boot • Spring Security • Hibernate • JPA • JavaFX</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 style="color: #3498db;">Bases de données</h4>
+                        <div class="skill-list" style="color: #ecf0f1;">MySQL • PostgreSQL • MongoDB • Oracle</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4 style="color: #3498db;">Outils</h4>
+                        <div class="skill-list" style="color: #ecf0f1;">Maven • Gradle • Git • Docker • Postman</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- References section pour desktop -->
+            <div class="references-section" style="display: none;">
+                <h3 class="section-title" style="color: white; border-bottom-color: #3498db;">Références</h3>
+                <div class="reference-item" style="background: rgba(255,255,255,0.1); border-left: 4px solid #3498db;">
+                    <div class="reference-name" style="color: #3498db;">Hodéléa Soké EDORH</div>
+                    <div class="reference-company" style="color: #ecf0f1;">Responsable Revenue Assurance Telecom chez Togocom</div>
+                </div>
+                <div class="reference-item" style="background: rgba(255,255,255,0.1); border-left: 4px solid #3498db;">
+                    <div class="reference-name" style="color: #3498db;">Kpedzi Kondi Mawouli</div>
+                    <div class="reference-company" style="color: #ecf0f1;">Responsable RH chez Atos IT Solutions</div>
+                </div>
             </div>
         </div>
         
@@ -459,59 +448,31 @@
                 <p class="profile-text">
                     Développeur Java orienté backend, passionné par l'architecture logicielle, le développement d'API REST et les systèmes distribués. Expérience confirmée en microservices, bases de données et applications connectées. Spécialisé dans les solutions gouvernementales et de gestion des ressources humaines.
                 </p>
-                
-                <div class="achievements-box">
-                    <div class="achievement-title">Réalisations Clés</div>
-                    <div class="achievement-list">
-                        • 6+ applications Java développées • Spring Boot maîtrisé • Architecture microservices • Bases de données optimisées • API REST sécurisées
-                    </div>
-                </div>
             </div>
             
-            <div class="section">
+            <!-- Skills pour mobile/tablet -->
+            <div class="section mobile-skills">
                 <h2 class="section-title">Compétences Techniques</h2>
-                
-                <div class="skills-container">
+                <div class="skills-grid">
                     <div class="skill-category">
                         <h4>Langages</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Java 8+</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Dart</span>
-                        </div>
+                        <div class="skill-list">Java (8+) • SQL • JavaScript • Dart</div>
                     </div>
-                    
                     <div class="skill-category">
                         <h4>Frameworks</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Spring Boot</span>
-                            <span class="skill-tag">Spring Security</span>
-                            <span class="skill-tag">Hibernate</span>
-                            <span class="skill-tag">JPA</span>
-                            <span class="skill-tag">JavaFX</span>
-                        </div>
+                        <div class="skill-list">Spring Boot • Spring Security • Hibernate • JPA • Quarkus • JavaFX</div>
                     </div>
-                    
                     <div class="skill-category">
                         <h4>Bases de données</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">Oracle</span>
-                        </div>
+                        <div class="skill-list">MySQL • PostgreSQL • MongoDB • Oracle</div>
                     </div>
-                    
                     <div class="skill-category">
-                        <h4>Outils & DevOps</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Maven</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Postman</span>
-                            <span class="skill-tag">JUnit</span>
-                        </div>
+                        <h4>Outils</h4>
+                        <div class="skill-list">Maven • Gradle • Git • Docker • Postman</div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tests & Autres</h4>
+                        <div class="skill-list">JUnit • Mockito • API REST • WebSockets • JWT • OAuth2</div>
                     </div>
                 </div>
             </div>
@@ -528,20 +489,20 @@
                     <ul class="job-tasks">
                         <li>Développement application JavaFX + Spring Boot pour gestion des écoles</li>
                         <li>Base de données centralisée des établissements scolaires du Togo</li>
-                        <li>Interface desktop moderne avec backend robuste</li>
+                        <li>Interface desktop moderne avec Spring Boot backend</li>
                     </ul>
                 </div>
                 
                 <div class="experience-item">
                     <div class="job-header">
                         <h3 class="job-title">Développeur Backend/RH</h3>
-                        <p class="job-company">MyRH - Application de Gestion RH</p>
+                        <p class="job-company">MyRH - Application de Gestion des Ressources Humaines</p>
                         <span class="job-year">2024</span>
                     </div>
                     <ul class="job-tasks">
                         <li>Système complet de gestion RH avec Spring Boot + MySQL</li>
                         <li>Module de génération automatique des bulletins de paie</li>
-                        <li>Gestion des départements et workflow d'approbation</li>
+                        <li>Gestion des départements, postes vacants et workflow d'approbation</li>
                     </ul>
                 </div>
                 
@@ -552,22 +513,22 @@
                         <span class="job-year">2025</span>
                     </div>
                     <ul class="job-tasks">
-                        <li>Application e-learning avec Spring Boot + MySQL</li>
+                        <li>Développement d'une application e-learning avec Spring Boot + MySQL</li>
                         <li>Gestion des utilisateurs, cours et messagerie instantanée</li>
-                        <li>Création de microservices pour vidéos et documents</li>
+                        <li>Création de microservices pour vidéos et PDF</li>
                     </ul>
                 </div>
                 
                 <div class="experience-item">
                     <div class="job-header">
                         <h3 class="job-title">Développeur Fullstack</h3>
-                        <p class="job-company">Projet PayTicket - Agence PayTicket</p>
+                        <p class="job-company">Projet PayTicket Delivery - Agence PayTicket</p>
                         <span class="job-year">2025</span>
                     </div>
                     <ul class="job-tasks">
-                        <li>Backend Spring Boot pour billetterie en ligne</li>
-                        <li>Gestion des paiements et événements avec Swagger</li>
-                        <li>Frontend mobile en Flutter connecté à l'API</li>
+                        <li>Développement backend en Spring Boot pour billetterie en ligne</li>
+                        <li>Gestion des paiements, tickets et événements avec Swagger</li>
+                        <li>Frontend mobile en Flutter</li>
                     </ul>
                 </div>
             </div>
@@ -575,7 +536,7 @@
             <div class="section">
                 <h2 class="section-title">Formation</h2>
                 <div class="education-item">
-                    <h3 class="degree">Licence en Informatique / Génie Logiciel</h3>
+                    <h3 class="degree">Licence en Informatique ou Génie logiciel</h3>
                     <p class="school">ESIBA BUSINESS SCHOOL</p>
                     <p class="year">2022 – en cours</p>
                 </div>
@@ -585,81 +546,69 @@
                 <h2 class="section-title">Projets Remarquables</h2>
                 <div class="projects-grid">
                     <div class="project-item">
-                        <span class="project-badge">Java</span>
                         <h3 class="project-name">Loky Application (PDSSE)</h3>
-                        <p class="project-description">JavaFX + Spring Boot pour gestion centralisée des établissements scolaires du Togo avec reporting statistique complet.</p>
+                        <p class="project-description">JavaFX + Spring Boot pour gestion centralisée des établissements scolaires du Togo avec reporting statistique.</p>
                     </div>
                     
                     <div class="project-item">
-                        <span class="project-badge">Spring</span>
                         <h3 class="project-name">MyRH - Système RH Complet</h3>
                         <p class="project-description">Plateforme RH avec bulletins de paie automatiques, gestion départements et workflow des congés.</p>
                     </div>
                     
                     <div class="project-item">
-                        <span class="project-badge">API</span>
                         <h3 class="project-name">API Billetterie PayTicket</h3>
-                        <p class="project-description">Spring Boot + MySQL, gestion paiements sécurisés, génération tickets, documentation Swagger.</p>
+                        <p class="project-description">Spring Boot + MySQL, gestion paiements, génération tickets, documentation Swagger complète.</p>
                     </div>
                     
                     <div class="project-item">
-                        <span class="project-badge">E-Learning</span>
-                        <h3 class="project-name">Plateforme MindCraft</h3>
-                        <p class="project-description">Application e-learning complète avec microservices, gestion cours, vidéos et chat temps réel.</p>
+                        <h3 class="project-name">Plateforme E-Learning</h3>
+                        <p class="project-description">Application web avec Spring Boot, gestion cours, vidéos, quiz et système de messagerie intégré.</p>
                     </div>
                 </div>
             </div>
             
-            <div class="section">
+            <!-- References pour mobile/tablet -->
+            <div class="section mobile-references">
                 <h2 class="section-title">Références</h2>
-                <div class="references-grid">
-                    <div class="reference-item">
-                        <div class="reference-name">Hodéléa Soké EDORH</div>
-                        <div class="reference-company">Responsable Revenue Assurance Telecom et Mobile Money chez Togocom</div>
-                    </div>
-                    
-                    <div class="reference-item">
-                        <div class="reference-name">Kpedzi Kondi Mawouli</div>
-                        <div class="reference-company">Responsable RH et formation Chez Atos IT Solutions and Services A/S</div>
-                    </div>
-                    
-                    <div class="reference-item">
-                        <div class="reference-name">Alassani Akanate</div>
-                        <div class="reference-company">Ingénieur d'Etat en Télécoms de formation</div>
-                    </div>
+                <div class="reference-item">
+                    <div class="reference-name">Hodéléa Soké EDORH</div>
+                    <div class="reference-company">Responsable Revenue Assurance Telecom et Mobile Money chez Togocom</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-name">Kpedzi Kondi Mawouli</div>
+                    <div class="reference-company">Responsable RH et formation Chez Atos IT Solutions and Services A/S</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-name">Alassani Akanate</div>
+                    <div class="reference-company">Ingénieur d'Etat en Télécoms de formation</div>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="floating-contact" onclick="toggleContact()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
-        </svg>
-    </div>
-    
-    <div class="contact-modal" id="contactModal">
-        <h4 style="margin-bottom: 12px; color: #1f2937;">Contact rapide</h4>
-        <p style="font-size: 14px; margin-bottom: 8px; color: #4b5563;">📱 +228 92 86 60 99</p>
-        <p style="font-size: 14px; margin-bottom: 8px; color: #4b5563;">📧 kpedzibernard@gmail.com</p>
-        <p style="font-size: 14px; color: #4b5563;">📍 Lomé, Togo</p>
-    </div>
-    
     <script>
-        function toggleContact() {
-            const modal = document.getElementById('contactModal');
-            modal.classList.toggle('show');
+        // Gestion de l'affichage responsive
+        function handleResize() {
+            const skillsSection = document.querySelector('.skills-section');
+            const referencesSection = document.querySelector('.references-section');
+            const mobileSkills = document.querySelector('.mobile-skills');
+            const mobileReferences = document.querySelector('.mobile-references');
+            
+            if (window.innerWidth >= 1024) {
+                skillsSection.style.display = 'block';
+                referencesSection.style.display = 'block';
+                mobileSkills.style.display = 'none';
+                mobileReferences.style.display = 'none';
+            } else {
+                skillsSection.style.display = 'none';
+                referencesSection.style.display = 'none';
+                mobileSkills.style.display = 'block';
+                mobileReferences.style.display = 'block';
+            }
         }
         
-        // Fermer le modal si on clique ailleurs
-        document.addEventListener('click', function(event) {
-            const modal = document.getElementById('contactModal');
-            const button = document.querySelector('.floating-contact');
-            
-            if (!modal.contains(event.target) && !button.contains(event.target)) {
-                modal.classList.remove('show');
-            }
-        });
+        window.addEventListener('load', handleResize);
+        window.addEventListener('resize', handleResize);
     </script>
 </body>
 </html>
