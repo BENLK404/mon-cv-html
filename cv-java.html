@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - BERNARD KOKOU KPEDZI - Java Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.4;
+            color: #1f2937;
+            background: #f8fafc;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .mobile-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-image-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .title {
+            font-size: 16px;
+            color: #e0e7ff;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #e0e7ff;
+        }
+        
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        
+        .main-content {
+            padding: 0;
+        }
+        
+        .section {
+            padding: 24px 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1e40af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .profile-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4b5563;
+            text-align: justify;
+        }
+        
+        .skills-container {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .skill-category h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e40af;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .experience-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .job-header {
+            margin-bottom: 12px;
+        }
+        
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+        
+        .job-company {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .job-year {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .job-tasks {
+            list-style: none;
+            margin-top: 12px;
+        }
+        
+        .job-tasks li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        
+        .job-tasks li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #1e40af;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .education-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #1e40af;
+        }
+        
+        .degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .school {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 6px;
+        }
+        
+        .year {
+            font-size: 14px;
+            color: #1e40af;
+            font-weight: 600;
+        }
+        
+        .projects-grid {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .project-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #1e40af;
+            color: white;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .project-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+            padding-right: 60px;
+        }
+        
+        .project-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .references-grid {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .reference-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 3px solid #1e40af;
+        }
+        
+        .reference-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 6px;
+        }
+        
+        .reference-company {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+        
+        .achievements-box {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .achievement-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-list {
+            font-size: 15px;
+            color: #1e40af;
+            line-height: 1.5;
+        }
+        
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1e40af;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+        
+        .floating-contact:hover {
+            transform: scale(1.1);
+        }
+        
+        .contact-modal {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 999;
+            min-width: 250px;
+        }
+        
+        .contact-modal.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Responsive breakpoints */
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+                margin: 0 auto;
+            }
+            
+            .mobile-header {
+                padding: 32px 24px;
+            }
+            
+            .section {
+                padding: 32px 24px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .references-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media print {
+            .floating-contact,
+            .contact-modal {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12px;
+            }
+            
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mobile-header">
+            <div class="profile-image-placeholder">
+                BK
+            </div>
+            <h1 class="name">BERNARD KOKOU KPEDZI</h1>
+            <p class="title">Développeur Java Backend</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                    </svg>
+                    +228 92 86 60 99
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                    </svg>
+                    kpedzibernard@gmail.com
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                    </svg>
+                    Lomé, Togo
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                    </svg>
+                    BENLK404
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Profil Professionnel</h2>
+                <p class="profile-text">
+                    Développeur Java orienté backend, passionné par l'architecture logicielle, le développement d'API REST et les systèmes distribués. Expérience confirmée en microservices, bases de données et applications connectées. Spécialisé dans les solutions gouvernementales et de gestion des ressources humaines.
+                </p>
+                
+                <div class="achievements-box">
+                    <div class="achievement-title">Réalisations Clés</div>
+                    <div class="achievement-list">
+                        • 6+ applications Java développées • Spring Boot maîtrisé • Architecture microservices • Bases de données optimisées • API REST sécurisées
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Compétences Techniques</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Langages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java 8+</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Dart</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Frameworks</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Spring Security</span>
+                            <span class="skill-tag">Hibernate</span>
+                            <span class="skill-tag">JPA</span>
+                            <span class="skill-tag">JavaFX</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Bases de données</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Oracle</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Outils & DevOps</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Maven</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Postman</span>
+                            <span class="skill-tag">JUnit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Développeur Java Desktop/Backend</h3>
+                        <p class="job-company">Loky Application - Ministère de l'Enseignement (PDSSE)</p>
+                        <span class="job-year">2024</span>
+                    </div>
+                    <ul class="job-tasks">
+                        <li>Développement application JavaFX + Spring Boot pour gestion des écoles</li>
+                        <li>Base de données centralisée des établissements scolaires du Togo</li>
+                        <li>Interface desktop moderne avec backend robuste</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Développeur Backend/RH</h3>
+                        <p class="job-company">MyRH - Application de Gestion RH</p>
+                        <span class="job-year">2024</span>
+                    </div>
+                    <ul class="job-tasks">
+                        <li>Système complet de gestion RH avec Spring Boot + MySQL</li>
+                        <li>Module de génération automatique des bulletins de paie</li>
+                        <li>Gestion des départements et workflow d'approbation</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Développeur Backend Java</h3>
+                        <p class="job-company">Projet MindCraft - ESIBA Business School</p>
+                        <span class="job-year">2025</span>
+                    </div>
+                    <ul class="job-tasks">
+                        <li>Application e-learning avec Spring Boot + MySQL</li>
+                        <li>Gestion des utilisateurs, cours et messagerie instantanée</li>
+                        <li>Création de microservices pour vidéos et documents</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Développeur Fullstack</h3>
+                        <p class="job-company">Projet PayTicket - Agence PayTicket</p>
+                        <span class="job-year">2025</span>
+                    </div>
+                    <ul class="job-tasks">
+                        <li>Backend Spring Boot pour billetterie en ligne</li>
+                        <li>Gestion des paiements et événements avec Swagger</li>
+                        <li>Frontend mobile en Flutter connecté à l'API</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Formation</h2>
+                <div class="education-item">
+                    <h3 class="degree">Licence en Informatique / Génie Logiciel</h3>
+                    <p class="school">ESIBA BUSINESS SCHOOL</p>
+                    <p class="year">2022 – en cours</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Projets Remarquables</h2>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <span class="project-badge">Java</span>
+                        <h3 class="project-name">Loky Application (PDSSE)</h3>
+                        <p class="project-description">JavaFX + Spring Boot pour gestion centralisée des établissements scolaires du Togo avec reporting statistique complet.</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <span class="project-badge">Spring</span>
+                        <h3 class="project-name">MyRH - Système RH Complet</h3>
+                        <p class="project-description">Plateforme RH avec bulletins de paie automatiques, gestion départements et workflow des congés.</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <span class="project-badge">API</span>
+                        <h3 class="project-name">API Billetterie PayTicket</h3>
+                        <p class="project-description">Spring Boot + MySQL, gestion paiements sécurisés, génération tickets, documentation Swagger.</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <span class="project-badge">E-Learning</span>
+                        <h3 class="project-name">Plateforme MindCraft</h3>
+                        <p class="project-description">Application e-learning complète avec microservices, gestion cours, vidéos et chat temps réel.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Références</h2>
+                <div class="references-grid">
+                    <div class="reference-item">
+                        <div class="reference-name">Hodéléa Soké EDORH</div>
+                        <div class="reference-company">Responsable Revenue Assurance Telecom et Mobile Money chez Togocom</div>
+                    </div>
+                    
+                    <div class="reference-item">
+                        <div class="reference-name">Kpedzi Kondi Mawouli</div>
+                        <div class="reference-company">Responsable RH et formation Chez Atos IT Solutions and Services A/S</div>
+                    </div>
+                    
+                    <div class="reference-item">
+                        <div class="reference-name">Alassani Akanate</div>
+                        <div class="reference-company">Ingénieur d'Etat en Télécoms de formation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="floating-contact" onclick="toggleContact()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+        </svg>
+    </div>
+    
+    <div class="contact-modal" id="contactModal">
+        <h4 style="margin-bottom: 12px; color: #1f2937;">Contact rapide</h4>
+        <p style="font-size: 14px; margin-bottom: 8px; color: #4b5563;">📱 +228 92 86 60 99</p>
+        <p style="font-size: 14px; margin-bottom: 8px; color: #4b5563;">📧 kpedzibernard@gmail.com</p>
+        <p style="font-size: 14px; color: #4b5563;">📍 Lomé, Togo</p>
+    </div>
+    
+    <script>
+        function toggleContact() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.toggle('show');
+        }
+        
+        // Fermer le modal si on clique ailleurs
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('contactModal');
+            const button = document.querySelector('.floating-contact');
+            
+            if (!modal.contains(event.target) && !button.contains(event.target)) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
