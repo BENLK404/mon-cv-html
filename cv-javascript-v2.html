@@ -1192,22 +1192,37 @@
         function downloadPDF() {
             // Create a toast notification
             showToast(currentLanguage === 'fr' ? 
-                'Génération du PDF en cours...' : 
-                'Generating PDF...'
+                'Téléchargement du PDF en cours...' : 
+                'Downloading PDF...'
             );
 
-            // Simulate PDF generation
-            setTimeout(() => {
+            try {
+                // Create download link for existing PDF file
                 const link = document.createElement('a');
-                link.href = '#';
-                link.download = 'Bernard_Kokou_Kpedzi_CV.pdf';
+                link.href = 'CV_Bernard_Kpedzi_Developpeur_JavaScript.pdf';
+                link.download = 'CV_Bernard_Kpedzi_Developpeur_JavaScript.pdf';
+                link.target = '_blank';
                 
-                // In a real implementation, you would generate the actual PDF here
+                // Append to body, click, and remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Success notification
+                setTimeout(() => {
+                    showToast(currentLanguage === 'fr' ? 
+                        'PDF téléchargé avec succès!' : 
+                        'PDF downloaded successfully!'
+                    );
+                }, 500);
+                
+            } catch (error) {
+                console.error('Erreur lors du téléchargement:', error);
                 showToast(currentLanguage === 'fr' ? 
-                    'PDF téléchargé avec succès!' : 
-                    'PDF downloaded successfully!'
+                    'Erreur lors du téléchargement du PDF' : 
+                    'Error downloading PDF'
                 );
-            }, 1500);
+            }
         }
 
         // Scroll animations
