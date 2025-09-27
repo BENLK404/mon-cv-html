@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernard Kokou Kpedzi - Junior JavaScript Developer</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06d6a0;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #475569;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header moderne avec glassmorphism */
+        .header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .header {
+            background: rgba(248, 250, 252, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+        }
+
+        .profile-avatar span {
+            z-index: 1;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .contact-item {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+        }
+
+        /* Main content avec layout moderne */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            padding: 0 1rem 2rem;
+        }
+
+        .content-primary {
+            space-y: 2rem;
+        }
+
+        .sidebar {
+            space-y: 2rem;
+        }
+
+        /* Cards avec glassmorphism */
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .card {
+            background: rgba(241, 245, 249, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+        }
+
+        /* Skills avec progress bars animées */
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        [data-theme="light"] .skill-category {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-category h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .skill-tag.learning {
+            background: linear-gradient(135deg, var(--warning), #fb923c);
+        }
+
+        /* Experience avec timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        [data-theme="light"] .experience-item {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.25rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+        }
+
+        .job-header {
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .job-company {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .job-year {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .job-description {
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .job-tasks {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .job-tasks li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .job-tasks li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Projects avec hover effects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .project-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-status {
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-status.learning {
+            background: linear-gradient(135deg, var(--warning), #fb923c);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Floating action buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(99, 102, 241, 0.6);
+        }
+
+        .fab.lang {
+            background: linear-gradient(135deg, var(--warning), #fb923c);
+        }
+
+        /* Achievements section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .achievement-card {
+            background: rgba(6, 214, 160, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .achievement-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .achievement-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                margin: 0.5rem;
+                padding: 1.5rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 0 0.5rem 2rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-actions {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .floating-actions {
+                display: none;
+            }
+            
+            .card {
+                background: white;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+        }
+
+        /* Hidden class for animations */
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Actions -->
+    <div class="floating-actions">
+        <button class="fab lang" onclick="toggleLanguage()" title="FR/EN">
+            FR
+        </button>
+        <button class="fab" onclick="toggleTheme()" title="Toggle Theme">
+            🌙
+        </button>
+        <button class="fab" onclick="window.print()" title="Print CV">
+            🖨️
+        </button>
+        <button class="fab" onclick="downloadPDF()" title="Download PDF">
+            📄
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-avatar">
+                <span>BK</span>
+            </div>
+            <h1 class="name">Bernard Kokou Kpedzi</h1>
+            <p class="title" data-fr="Développeur JavaScript Junior" data-en="Junior JavaScript Developer">Développeur JavaScript Junior</p>
+            
+            <div class="contact-grid">
+                <a href="tel:+22892866099" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.2c.27-.28.35-.67.24-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/>
+                    </svg>
+                    +228 92 86 60 99
+                </a>
+                <a href="mailto:kpedzibernard@gmail.com" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    kpedzibernard@gmail.com
+                </a>
+                <a href="https://github.com/BENLK404" target="_blank" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    BENLK404
+                </a>
+                <a href="https://linkedin.com/in/kokou-bernard-kpedzi" target="_blank" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    Bernard Kpedzi
+                </a>
+                <a href="https://maps.google.com/?q=Lomé,Togo" target="_blank" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    Lomé, Togo
+                </a>
+                <a href="#" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span data-fr="2+ ans d'expérience" data-en="2+ years experience">2+ ans d'expérience</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-primary">
+                <!-- Profile Section -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4V6C15 7.1 14.1 8 13 8S11 7.1 11 6V4L5 7V9C5 10.1 5.9 11 7 11S9 10.1 9 9H11C11 10.1 11.9 11 13 11S15 10.1 15 9H17C17 10.1 17.9 11 19 11S21 10.1 21 9Z"/>
+                        </svg>
+                        <span data-fr="Développeur JavaScript Junior" data-en="Junior JavaScript Developer">Développeur JavaScript Junior</span>
+                    </h2>
+                    <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7;" data-fr="Développeur JavaScript passionné avec 2 ans d'expérience dans l'écosystème web moderne. Spécialisé dans React et Node.js avec une solide base en développement full-stack. Motivé par l'apprentissage continu et désireux de contribuer à des projets innovants. Expérience pratique en développement d'applications web, API REST et bases de données." data-en="Passionate JavaScript Developer with 2 years of experience in the modern web ecosystem. Specialized in React and Node.js with a solid foundation in full-stack development. Driven by continuous learning and eager to contribute to innovative projects. Practical experience in web application development, REST APIs, and databases.">
+                        Développeur JavaScript passionné avec 2 ans d'expérience dans l'écosystème web moderne. 
+                        Spécialisé dans React et Node.js avec une solide base en développement full-stack. 
+                        Motivé par l'apprentissage continu et désireux de contribuer à des projets innovants. 
+                        Expérience pratique en développement d'applications web, API REST et bases de données.
+                    </p>
+                </div>
+
+                <!-- Achievements -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5,16L3,5H1V3H4L6,14H18.5L19.5,12H7L8.1,7H21L18.5,16H5Z"/>
+                        </svg>
+                        <span data-fr="Réalisations Clés" data-en="Key Achievements">Réalisations Clés</span>
+                    </h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <span class="achievement-number">8+</span>
+                            <div class="achievement-label" data-fr="Projets Développés" data-en="Projects Developed">Projets Développés</div>
+                        </div>
+                        <div class="achievement-card">
+                            <span class="achievement-number">15K+</span>
+                            <div class="achievement-label" data-fr="Lignes de Code" data-en="Lines of Code">Lignes de Code</div>
+                        </div>
+                        <div class="achievement-card">
+                            <span class="achievement-number">95%</span>
+                            <div class="achievement-label" data-fr="Tests Coverage" data-en="Test Coverage">Tests Coverage</div>
+                        </div>
+                        <div class="achievement-card">
+                            <span class="achievement-number">2+</span>
+                            <div class="achievement-label" data-fr="Ans d'Expérience" data-en="Years Experience">Ans d'Expérience</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20,6H16V4A2,2 0 0,0 14,2H10A2,2 0 0,0 8,4V6H4A2,2 0 0,0 2,8V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V8A2,2 0 0,0 20,6M10,4H14V6H10V4Z"/>
+                        </svg>
+                        <span data-fr="Expérience Professionnelle" data-en="Professional Experience">Expérience Professionnelle</span>
+                    </h2>
+                    <div class="experience-timeline">
+                        <div class="experience-item">
+                            <div class="job-header">
+                                <h3 class="job-title" data-fr="Développeur Full-Stack Junior" data-en="Junior Full-Stack Developer">Développeur Full-Stack Junior</h3>
+                                <p class="job-company">MindCraft E-Learning Platform - ESIBA Business School</p>
+                                <span class="job-year">2025</span>
+                            </div>
+                            <p class="job-description" data-fr="Développement d'une plateforme e-learning moderne avec fonctionnalités interactives et système de gestion de contenu." data-en="Development of a modern e-learning platform with interactive features and content management system.">
+                                Développement d'une plateforme e-learning moderne avec fonctionnalités interactives et système de gestion de contenu.
+                            </p>
+                            <ul class="job-tasks">
+                                <li data-fr="Développement frontend React avec hooks et state management" data-en="Frontend React development with hooks and state management">Développement frontend React avec hooks et state management</li>
+                                <li data-fr="Création d'API REST avec Node.js et Express" data-en="REST API creation with Node.js and Express">Création d'API REST avec Node.js et Express</li>
+                                <li data-fr="Intégration de chat temps réel avec Socket.io" data-en="Real-time chat integration with Socket.io">Intégration de chat temps réel avec Socket.io</li>
+                                <li data-fr="Gestion de base de données MongoDB" data-en="MongoDB database management">Gestion de base de données MongoDB</li>
+                                <li data-fr="Tests unitaires avec Jest et React Testing Library" data-en="Unit testing with Jest and React Testing Library">Tests unitaires avec Jest et React Testing Library</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">Express</span>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="job-header">
+                                <h3 class="job-title" data-fr="Développeur Frontend" data-en="Frontend Developer">Développeur Frontend</h3>
+                                <p class="job-company">Dashboard Analytics Project</p>
+                                <span class="job-year">2024 - 2025</span>
+                            </div>
+                            <p class="job-description" data-fr="Création d'interfaces utilisateur modernes avec visualisations de données et design responsive." data-en="Creation of modern user interfaces with data visualizations and responsive design.">
+                                Création d'interfaces utilisateur modernes avec visualisations de données et design responsive.
+                            </p>
+                            <ul class="job-tasks">
+                                <li data-fr="Interface React avec composants réutilisables" data-en="React interface with reusable components">Interface React avec composants réutilisables</li>
+                                <li data-fr="Visualisations interactives avec Chart.js" data-en="Interactive visualizations with Chart.js">Visualisations interactives avec Chart.js</li>
+                                <li data-fr="Design responsive avec Tailwind CSS" data-en="Responsive design with Tailwind CSS">Design responsive avec Tailwind CSS</li>
+                                <li data-fr="Optimisation des performances et SEO" data-en="Performance optimization and SEO">Optimisation des performances et SEO</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Chart.js</span>
+                                <span class="tech-tag">Tailwind</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="job-header">
+                                <h3 class="job-title" data-fr="Développeur Backend" data-en="Backend Developer">Développeur Backend</h3>
+                                <p class="job-company">PayTicket API - Agence PayTicket</p>
+                                <span class="job-year">2024</span>
+                            </div>
+                            <p class="job-description" data-fr="Développement d'API pour système de billetterie avec gestion des paiements et génération de tickets." data-en="API development for ticketing system with payment processing and ticket generation.">
+                                Développement d'API pour système de billetterie avec gestion des paiements et génération de tickets.
+                            </p>
+                            <ul class="job-tasks">
+                                <li data-fr="API REST avec Node.js et Express" data-en="REST API with Node.js and Express">API REST avec Node.js et Express</li>
+                                <li data-fr="Authentification JWT et sécurisation" data-en="JWT authentication and security">Authentification JWT et sécurisation</li>
+                                <li data-fr="Génération de QR codes pour tickets" data-en="QR code generation for tickets">Génération de QR codes pour tickets</li>
+                                <li data-fr="Documentation API avec Swagger" data-en="API documentation with Swagger">Documentation API avec Swagger</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">JWT</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="job-header">
+                                <h3 class="job-title" data-fr="Développeur Vue.js" data-en="Vue.js Developer">Développeur Vue.js</h3>
+                                <p class="job-company">Système RH MyRH</p>
+                                <span class="job-year">2023 - 2024</span>
+                            </div>
+                            <p class="job-description" data-fr="Application de gestion des ressources humaines avec workflow d'approbation et génération de documents." data-en="Human resources management application with approval workflow and document generation.">
+                                Application de gestion des ressources humaines avec workflow d'approbation et génération de documents.
+                            </p>
+                            <ul class="job-tasks">
+                                <li data-fr="Application Vue.js 3 avec Composition API" data-en="Vue.js 3 application with Composition API">Application Vue.js 3 avec Composition API</li>
+                                <li data-fr="State management avec Pinia" data-en="State management with Pinia">State management avec Pinia</li>
+                                <li data-fr="Intégration backend avec API REST" data-en="Backend integration with REST API">Intégration backend avec API REST</li>
+                                <li data-fr="Système de notifications en temps réel" data-en="Real-time notification system">Système de notifications en temps réel</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Vue.js 3</span>
+                                <span class="tech-tag">Pinia</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
+                        </svg>
+                        <span data-fr="Projets Personnels" data-en="Personal Projects">Projets Personnels</span>
+                    </h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title" data-fr="Todo App Avancée" data-en="Advanced Todo App">Todo App Avancée</h3>
+                                <span class="project-status" data-fr="Terminé" data-en="Completed">Terminé</span>
+                            </div>
+                            <p class="project-description" data-fr="Application de gestion de tâches avec drag & drop, filtres avancés, et synchronisation cloud." data-en="Task management application with drag & drop, advanced filters, and cloud synchronization.">
+                                Application de gestion de tâches avec drag & drop, filtres avancés, et synchronisation cloud.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">JWT</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title" data-fr="Portfolio Personnel" data-en="Personal Portfolio">Portfolio Personnel</h3>
+                                <span class="project-status" data-fr="En ligne" data-en="Live">En ligne</span>
+                            </div>
+                            <p class="project-description" data-fr="Portfolio responsive avec animations, mode sombre/clair, et optimisations SEO." data-en="Responsive portfolio with animations, dark/light mode, and SEO optimizations.">
+                                Portfolio responsive avec animations, mode sombre/clair, et optimisations SEO.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">GSAP</span>
+                                <span class="tech-tag">Tailwind</span>
+                                <span class="tech-tag">Vercel</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title" data-fr="Chat App Temps Réel" data-en="Real-Time Chat App">Chat App Temps Réel</h3>
+                                <span class="project-status learning" data-fr="En cours" data-en="In Progress">En cours</span>
+                            </div>
+                            <p class="project-description" data-fr="Application de chat avec salles privées, partage de fichiers, et notifications push." data-en="Chat application with private rooms, file sharing, and push notifications.">
+                                Application de chat avec salles privées, partage de fichiers, et notifications push.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">Redis</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title" data-fr="API Météo" data-en="Weather API">API Météo</h3>
+                                <span class="project-status" data-fr="Terminé" data-en="Completed">Terminé</span>
+                            </div>
+                            <p class="project-description" data-fr="API REST pour données météorologiques avec cache Redis et documentation Swagger." data-en="REST API for weather data with Redis cache and Swagger documentation.">
+                                API REST pour données météorologiques avec cache Redis et documentation Swagger.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Swagger</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title" data-fr="E-commerce Frontend" data-en="E-commerce Frontend">E-commerce Frontend</h3>
+                                <span class="project-status learning" data-fr="Apprentissage" data-en="Learning">Apprentissage</span>
+                            </div>
+                            <p class="project-description" data-fr="Interface e-commerce avec panier, filtres produits, et intégration paiement." data-en="E-commerce interface with shopping cart, product filters, and payment integration.">
+                                Interface e-commerce avec panier, filtres produits, et intégration paiement.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Stripe</span>
+                                <span class="tech-tag">Tailwind</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title" data-fr="Blog CMS" data-en="Blog CMS">Blog CMS</h3>
+                                <span class="project-status" data-fr="Terminé" data-en="Completed">Terminé</span>
+                            </div>
+                            <p class="project-description" data-fr="Système de gestion de contenu pour blog avec éditeur WYSIWYG et gestion d'images." data-en="Content management system for blog with WYSIWYG editor and image management.">
+                                Système de gestion de contenu pour blog avec éditeur WYSIWYG et gestion d'images.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Multer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Skills -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9,7H11L12,9.5L13,7H15L13,12L15,17H13L12,14.5L11,17H9L11,12L9,7M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/>
+                        </svg>
+                        <span data-fr="Compétences Techniques" data-en="Technical Skills">Compétences Techniques</span>
+                    </h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4 data-fr="🚀 Frontend" data-en="🚀 Frontend">🚀 Frontend</h4>
+                            <div class="skill-items">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">JavaScript ES6+</span>
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                                <span class="skill-tag">Tailwind CSS</span>
+                                <span class="skill-tag learning">TypeScript</span>
+                                <span class="skill-tag learning">Next.js</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4 data-fr="⚡ Backend" data-en="⚡ Backend">⚡ Backend</h4>
+                            <div class="skill-items">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Express.js</span>
+                                <span class="skill-tag">REST APIs</span>
+                                <span class="skill-tag">JWT</span>
+                                <span class="skill-tag">Socket.io</span>
+                                <span class="skill-tag learning">GraphQL</span>
+                                <span class="skill-tag learning">NestJS</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4 data-fr="💾 Bases de Données" data-en="💾 Databases">💾 Bases de Données</h4>
+                            <div class="skill-items">
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Redis</span>
+                                <span class="skill-tag learning">PostgreSQL</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4 data-fr="🔧 Outils" data-en="🔧 Tools">🔧 Outils</h4>
+                            <div class="skill-items">
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Postman</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Webpack</span>
+                                <span class="skill-tag learning">Docker</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4 data-fr="🧪 Tests" data-en="🧪 Testing">🧪 Tests</h4>
+                            <div class="skill-items">
+                                <span class="skill-tag">Jest</span>
+                                <span class="skill-tag">React Testing Library</span>
+                                <span class="skill-tag learning">Cypress</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                        </svg>
+                        <span data-fr="Formation" data-en="Education">Formation</span>
+                    </h2>
+                    <div style="space-y: 1.5rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;" data-fr="Licence en Informatique / Génie Logiciel" data-en="Bachelor in Computer Science / Software Engineering">
+                                Licence en Informatique / Génie Logiciel
+                            </h3>
+                            <p style="color: var(--accent); margin-bottom: 0.25rem;">ESIBA Business School</p>
+                            <p style="color: var(--text-muted); font-size: 0.875rem;" data-fr="2023 – En cours" data-en="2023 – In Progress">2023 – En cours</p>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1rem;" data-fr="Certifications & Formations:" data-en="Certifications & Training:">
+                                Certifications & Formations:
+                            </h4>
+                            <div style="space-y: 0.75rem;">
+                                <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 8px; margin-bottom: 0.75rem;">
+                                    <div style="font-weight: 500; color: var(--text-primary);" data-fr="JavaScript Moderne (ES6+)" data-en="Modern JavaScript (ES6+)">JavaScript Moderne (ES6+)</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-muted);">FreeCodeCamp</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 8px; margin-bottom: 0.75rem;">
+                                    <div style="font-weight: 500; color: var(--text-primary);" data-fr="React - Guide Complet" data-en="React - Complete Guide">React - Guide Complet</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-muted);">Udemy</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 8px;">
+                                    <div style="font-weight: 500; color: var(--text-primary);" data-fr="Node.js & MongoDB" data-en="Node.js & MongoDB">Node.js & MongoDB</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-muted);">Coursera</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16,4C16.88,4 17.67,4.38 18.18,5C18.69,4.38 19.48,4 20.36,4C21.8,4 22.96,5.16 22.96,6.6C22.96,7.6 22.36,8.46 21.44,8.82V20C21.44,21.1 20.54,22 19.44,22H8.56C7.46,22 6.56,21.1 6.56,20V8.82C5.64,8.46 5.04,7.6 5.04,6.6C5.04,5.16 6.2,4 7.64,4C8.52,4 9.31,4.38 9.82,5C10.33,4.38 11.12,4 12,4C12.88,4 13.67,4.38 14.18,5C14.69,4.38 15.48,4 16.36,4H16M16,6H15.44C14.9,6 14.44,6.46 14.44,7S14.9,8 15.44,8H16.56C17.1,8 17.56,7.54 17.56,7S17.1,6 16.56,6H16M12,6H11.44C10.9,6 10.44,6.46 10.44,7S10.9,8 11.44,8H12.56C13.1,8 13.56,7.54 13.56,7S13.1,6 12.56,6H12M7.64,6C7.1,6 6.64,6.46 6.64,7S7.1,8 7.64,8S8.64,7.54 8.64,7S8.18,6 7.64,6M8.56,10H19.44V20H8.56V10Z"/>
+                        </svg>
+                        <span data-fr="Références" data-en="References">Références</span>
+                    </h2>
+                    <div style="space-y: 1rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
+                            <h4 style="color: var(--accent); font-weight: 600; margin-bottom: 0.25rem;">
+                                Hodéléa Soké EDORH
+                            </h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.4;" data-fr="Responsable Revenue Assurance Telecom chez Togocom" data-en="Revenue Assurance Manager at Togocom">
+                                Responsable Revenue Assurance Telecom chez Togocom
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
+                            <h4 style="color: var(--accent); font-weight: 600; margin-bottom: 0.25rem;">
+                                Kpedzi Kondi Mawouli
+                            </h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.4;" data-fr="Responsable RH chez Atos IT Solutions" data-en="HR Manager at Atos IT Solutions">
+                                Responsable RH chez Atos IT Solutions
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px;">
+                            <h4 style="color: var(--accent); font-weight: 600; margin-bottom: 0.25rem;">
+                                Alassani Akanate
+                            </h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.4;" data-fr="Ingénieur d'État en Télécoms" data-en="State Engineer in Telecommunications">
+                                Ingénieur d'État en Télécoms
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="card">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                        </svg>
+                        <span data-fr="Langues" data-en="Languages">Langues</span>
+                    </h2>
+                    <div style="space-y: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-primary); font-weight: 500;" data-fr="Français" data-en="French">Français</span>
+                            <span style="color: var(--accent); font-size: 0.875rem;" data-fr="Natif" data-en="Native">Natif</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-primary); font-weight: 500;" data-fr="Anglais" data-en="English">Anglais</span>
+                            <span style="color: var(--accent); font-size: 0.875rem;" data-fr="Intermédiaire" data-en="Intermediate">Intermédiaire</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-primary); font-weight: 500;" data-fr="Ewé" data-en="Ewe">Ewé</span>
+                            <span style="color: var(--accent); font-size: 0.875rem;" data-fr="Natif" data-en="Native">Natif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let darkMode = true;
+        let currentLanguage = 'fr';
+
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme based on system preference or saved preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                toggleTheme();
+            }
+
+            // Initialize language
+            const savedLanguage = localStorage.getItem('language') || 'fr';
+            if (savedLanguage !== currentLanguage) {
+                toggleLanguage();
+            }
+
+            // Add scroll animations
+            initScrollAnimations();
+            
+            // Add typing effect to name
+            addTypingEffect();
+
+            // Add particle background
+            createParticleBackground();
+
+            // Add smooth scrolling
+            addSmoothScrolling();
+        });
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeButton = document.querySelector('.fab[onclick="toggleTheme()"]');
+            
+            if (darkMode) {
+                body.setAttribute('data-theme', 'light');
+                themeButton.innerHTML = '☀️';
+                darkMode = false;
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.removeAttribute('data-theme');
+                themeButton.innerHTML = '🌙';
+                darkMode = true;
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Language toggle functionality
+        function toggleLanguage() {
+            const langButton = document.querySelector('.fab.lang');
+            const elementsWithLang = document.querySelectorAll('[data-fr][data-en]');
+            
+            if (currentLanguage === 'fr') {
+                currentLanguage = 'en';
+                langButton.textContent = 'EN';
+                document.documentElement.lang = 'en';
+                
+                elementsWithLang.forEach(element => {
+                    element.textContent = element.getAttribute('data-en');
+                });
+            } else {
+                currentLanguage = 'fr';
+                langButton.textContent = 'FR';
+                document.documentElement.lang = 'fr';
+                
+                elementsWithLang.forEach(element => {
+                    element.textContent = element.getAttribute('data-fr');
+                });
+            }
+            
+            localStorage.setItem('language', currentLanguage);
+        }
+
+        // PDF download functionality
+        function downloadPDF() {
+            // Create a toast notification
+            showToast(currentLanguage === 'fr' ? 
+                'Génération du PDF en cours...' : 
+                'Generating PDF...'
+            );
+
+            // Simulate PDF generation
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = '#';
+                link.download = 'Bernard_Kokou_Kpedzi_CV.pdf';
+                
+                // In a real implementation, you would generate the actual PDF here
+                showToast(currentLanguage === 'fr' ? 
+                    'PDF téléchargé avec succès!' : 
+                    'PDF downloaded successfully!'
+                );
+            }, 1500);
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        entry.target.classList.remove('hidden');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.add('hidden');
+                observer.observe(card);
+            });
+
+            // Observe project cards for staggered animation
+            document.querySelectorAll('.project-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Observe skill tags for individual animations
+            document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+                tag.style.animationDelay = `${index * 0.05}s`;
+            });
+        }
+
+        // Typing effect for name
+        function addTypingEffect() {
+            const nameElement = document.querySelector('.name');
+            const originalText = nameElement.textContent;
+            let isAnimating = false;
+
+            nameElement.addEventListener('mouseenter', () => {
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                nameElement.textContent = '';
+                
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    if (i < originalText.length) {
+                        nameElement.textContent += originalText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeInterval);
+                        setTimeout(() => {
+                            isAnimating = false;
+                        }, 1000);
+                    }
+                }, 100);
+            });
+        }
+
+        // Particle background
+        function createParticleBackground() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.1';
+            document.body.appendChild(canvas);
+
+            let particles = [];
+            const particleCount = 50;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        size: Math.random() * 3 + 1
+                    });
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = '#6366f1';
+                    ctx.fill();
+                });
+
+                // Draw connections
+                particles.forEach((particle, i) => {
+                    particles.slice(i + 1).forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(particle.x, particle.y);
+                            ctx.lineTo(otherParticle.x, otherParticle.y);
+                            ctx.strokeStyle = `rgba(99, 102, 241, ${(100 - distance) / 100 * 0.2})`;
+                            ctx.stroke();
+                        }
+                    });
+                });
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            resizeCanvas();
+            createParticles();
+            animateParticles();
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createParticles();
+            });
+        }
+
+        // Smooth scrolling for internal links
+        function addSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Toast notification system
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                font-weight: 500;
+                max-width: 300px;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            // Slide in
+            setTimeout(() => {
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Slide out and remove
+            setTimeout(() => {
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Easter egg - Konami Code
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                activateEasterEgg();
+                konamiCode = [];
+            }
+        });
+
+        function activateEasterEgg() {
+            const avatar = document.querySelector('.profile-avatar');
+            avatar.style.animation = 'spin 2s linear infinite';
+            
+            showToast(currentLanguage === 'fr' ? 
+                '🎉 Code Konami activé! Développeur confirmed!' : 
+                '🎉 Konami Code activated! Developer confirmed!'
+            );
+
+            // Add rainbow effect to name
+            const name = document.querySelector('.name');
+            name.style.background = 'linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080)';
+            name.style.backgroundSize = '400% 400%';
+            name.style.animation = 'rainbow 2s ease infinite';
+            name.style.webkitBackgroundClip = 'text';
+            name.style.webkitTextFillColor = 'transparent';
+
+            // Reset after 5 seconds
+            setTimeout(() => {
+                avatar.style.animation = '';
+                name.style.background = 'linear-gradient(135deg, var(--text-primary), var(--text-secondary))';
+                name.style.animation = '';
+                name.style.webkitBackgroundClip = 'text';
+                name.style.webkitTextFillColor = 'transparent';
+            }, 5000);
+        }
+
+        // Add keyframe animations via JavaScript
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+
+            @keyframes rainbow {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+
+            .skill-tag:hover {
+                animation: pulse 0.6s ease-in-out;
+            }
+
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+
+            .experience-item::before {
+                animation: glow 2s ease-in-out infinite alternate;
+            }
+
+            @keyframes glow {
+                from { box-shadow: 0 0 5px var(--primary); }
+                to { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); }
+            }
+
+            .floating-actions .fab {
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .floating-actions .fab:hover {
+                animation: bounce 0.6s ease;
+            }
+
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                40% { transform: translateY(-10px); }
+                60% { transform: translateY(-5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add dynamic cursor effect
+        document.addEventListener('mousemove', function(e) {
+            if (window.innerWidth > 768) { // Only on desktop
+                const cursor = document.querySelector('.cursor') || createCursor();
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+
+        function createCursor() {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor';
+            cursor.style.cssText = `
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                opacity: 0.6;
+                transition: transform 0.2s ease;
+            `;
+            document.body.appendChild(cursor);
+            return cursor;
+        }
+
+        // Add interactive hover effects
+        document.querySelectorAll('.contact-item, .project-card, .skill-tag').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    console.log(`Page loaded in ${Math.round(perfData.loadEventEnd - perfData.loadEventStart)}ms`);
+                }, 0);
+            });
+        }
+
+        // Add accessibility improvements
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Add focus styles for keyboard navigation
+        const focusStyle = document.createElement('style');
+        focusStyle.textContent = `
+            .keyboard-navigation *:focus {
+                outline: 2px solid var(--primary) !important;
+                outline-offset: 2px !important;
+            }
+        `;
+        document.head.appendChild(focusStyle);
+
+        console.log('🚀 Bernard Kpedzi CV loaded successfully!');
+        console.log('💡 Try the Konami Code: ↑↑↓↓←→←→BA');
+    </script>
+</body>
+</html>
